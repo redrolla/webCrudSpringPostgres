@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>UsersEdit</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+<h3>Edit user</h3>
+<form action="#" th:object="${editUser}"
+      th:action="${'/users/edit/id=' + {editUser.id}}"
+       method="post">
+
+    <!--th:action="@{/users/edit}"-->
+    <!--th:action="@{'users/edit/id=' + ${editUser.id}
+    + '/login=' + ${editUser.login}
+    + '/password=' + ${editUser.password}
+    + '/email=' + ${editUser.email}
+    + '/phone_number=' + ${editUser.phone_number}}"-->
+
+    <span>Login:</span>
+    <p><input type="text" th:field="*{login}" value placeholder="Login"/></p>
+    <span>Password:</span>
+    <p><input type="text" th:field="*{password}" value placeholder="Password"/></p>
+    <span>E-mail:</span>
+    <p><input type="text" th:field="*{email}" value placeholder="E-mail"/></p>
+    <span>Phone number:</span>
+    <p><input type="text" th:field="*{phone_number}" value placeholder="Phone number"/></p>
+
+    <p><input type="submit" value="Submit"/> <input type="reset" value="Reset" /></p>
+</form>
+
+</body>
+</html>

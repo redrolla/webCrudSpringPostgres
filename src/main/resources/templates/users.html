@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Users</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+<h1>Users:</h1>
+
+<h3>Add new user to database:</h3>
+    <form action="#" th:action="@{/users}" th:object="${newUser}" method="post">
+
+        <p><input type="text" th:field="*{login}" value placeholder="Login"/></p>
+        <p><input type="text" th:field="*{password}" value placeholder="Password"/></p>
+        <p><input type="text" th:field="*{email}" value placeholder="E-mail"/></p>
+        <p><input type="text" th:field="*{phone_number}" value placeholder="Phone number"/></p>
+
+        <p><input type="submit" value="Submit" onclick="refreshUsersTable()"/> <input type="reset" value="Reset" /></p>
+    </form>
+
+<h3>All users from database:</h3>
+    <table>
+            <thead>
+                <tr>
+                    <th> Id </th>
+                    <th> Login </th>
+                    <th> Password </th>
+                    <th> E-mail </th>
+                    <th> Phone number </th>
+                    <th> Edit </th>
+                    <th> Delete </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:if="${users.empty}">
+                    <td colspan="2"> No Users Available </td>
+                </tr>
+                <tr th:each="user : ${users}">
+                    <td><span th:text="${user.id}"> Id </span></td>
+                    <td><span th:text="${user.login}"> Login </span></td>
+                    <td><span th:text="${user.password}"> Password </span></td>
+                    <td><span th:text="${user.email}"> E-mail </span></td>
+                    <td><span th:text="${user.phone_number}"> Phone number </span></td>
+                    <td><a th:href="${'users/edit/id=' + {user.id} + '/login=' + {user.login} + '/password=' + {user.password} + '/email=' + {user.email} + '/phone_number=' + {user.phone_number}}"> Edit </a></td>
+                    <td><a th:href="@{'users/delete/id=' + ${user.id}}"> Delete </a></td>
+                </tr>
+            </tbody>
+    </table>
+
+<!-- Users Table block -->
+<div id="usersTable">
+
+</div>
+
+
+<a href="/">Return to home page</a>
+</body>
+</html>
