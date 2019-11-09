@@ -20,6 +20,9 @@
 
     <span>Login:</span>
     <p><input type="text" th:field="*{login}" value placeholder="Login"/></p>
+    <span class="validationError"
+          th:if="${#fields.hasErrors('login')}"
+          th:errors="*{login}">Login error</span>
     <span>Password:</span>
     <p><input type="text" th:field="*{password}" value placeholder="Password"/></p>
     <span>E-mail:</span>

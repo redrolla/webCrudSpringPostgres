@@ -2,6 +2,8 @@ package testApplication.testApp.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,6 +12,8 @@ import testApplication.testApp.model.InputEntry;
 import testApplication.testApp.model.InputEntryService;
 import testApplication.testApp.model.User;
 import testApplication.testApp.model.UserService;
+
+import javax.validation.Valid;
 
 @Controller
 public class HomeController {
@@ -29,17 +33,7 @@ public class HomeController {
     @PostMapping("/")
     public String homeSubmit(@ModelAttribute InputEntry inputEntry, Model model){
         model.addAttribute("inputEntry", inputEntry);
-
-        System.out.println("model.asMap.keySey: ");
-        System.out.println(inputEntry.getId());
-        System.out.println(inputEntry.getContent());
-
-        for (InputEntry ie : inputEntryService.findAll()) {
-            System.out.println(ie.toString());
-        }
-
         inputEntryService.save(inputEntry);
-
         return "result";
     }
 
@@ -78,7 +72,11 @@ public class HomeController {
     }
 
     @PostMapping("users/edit/id={id}")
-    public String usersEditAfterPostPage(@ModelAttribute User afterEditUser, @PathVariable Long id, Model model){
+    public String usersEditAfterPostPage(@ModelAttribute @Valid User afterEditUser, BindingResult bindingResult, @PathVariable Long id, Model model){
+        if(bindingResult.hasErrors()){
+            //return usersEditAfterPostPage(afterEditUser,bindingResult,id,model);
+            return usersEditGetPage(afterEditUser.getId(),afterEditUser.getLogin(),afterEditUser.getPassword(),afterEditUser.getEmail(),afterEditUser.getPhone_number(),model);
+        }
         userService.save(afterEditUser);
         model.addAttribute("editUser",afterEditUser);
         return "redirect:/users";
