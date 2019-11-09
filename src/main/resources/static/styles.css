@@ -26,3 +26,7 @@ input[type=text] {
     width: 300px;
     margin: 1px 0;
 }
+
+span[class=validationError] {
+    color: red;
+}

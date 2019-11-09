@@ -62,20 +62,19 @@ public class HomeController {
         return usersGetPage(model);
     }
 
-    @GetMapping("/users/edit/id={id}/login={login}/password={password}/email={email}/phone_number={phone_number}")
-    public String usersEditGetPage(@PathVariable Long id, @PathVariable String login, @PathVariable String password,
-                                @PathVariable String email, @PathVariable String phone_number, Model model){
-        User editUser = new User(login,password,email,phone_number);
-        editUser.setId(id);
+    @GetMapping("/users/edit/id={id}")
+    public String usersEditGetPage(@PathVariable Long id, Model model){
+        User editUser = userService.findById(id).get();
         model.addAttribute("editUser",editUser);
         return "usersEdit";
     }
 
     @PostMapping("users/edit/id={id}")
-    public String usersEditAfterPostPage(@ModelAttribute @Valid User afterEditUser, BindingResult bindingResult, @PathVariable Long id, Model model){
+    public String usersEditAfterPostPage(@ModelAttribute("editUser") @Valid User afterEditUser, BindingResult bindingResult, @PathVariable Long id, Model model){
         if(bindingResult.hasErrors()){
-            //return usersEditAfterPostPage(afterEditUser,bindingResult,id,model);
-            return usersEditGetPage(afterEditUser.getId(),afterEditUser.getLogin(),afterEditUser.getPassword(),afterEditUser.getEmail(),afterEditUser.getPhone_number(),model);
+            System.out.println(model.asMap());
+            //return "redirect:/users/edit/id="+id;
+            return "usersEdit";
         }
         userService.save(afterEditUser);
         model.addAttribute("editUser",afterEditUser);

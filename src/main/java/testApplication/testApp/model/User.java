@@ -2,6 +2,8 @@ package testApplication.testApp.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "users")
@@ -11,11 +13,11 @@ public class User {
     private Long id;
     @NotBlank(message = "Login cant be empty")
     private String login;
-    //@Size(min=5, message="Password must be at least 5 characters long")
+    @Size(min=5, message="Password must be at least 5 characters long")
     private String password;
-    //@Pattern(regexp = "\\w+[@]\\w+[.]\\D{2,3}",message = "must be formatted like email@google.com, email@mail.ru and etc.")
+    @Pattern(regexp = "\\w+[@]\\w+[.]\\D{2,3}",message = "must be formatted like email@google.com, email@mail.ru and etc.")
     private String email;
-    //@Pattern(regexp="[0-9]{10}",message = "phone number must contain only 10 digits")
+    @Pattern(regexp="[0-9]{10}",message = "phone number must contain only 10 digits")
     private String phone_number;
 
     public User() {

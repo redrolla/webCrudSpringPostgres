@@ -11,23 +11,25 @@
       th:action="${'/users/edit/id=' + {editUser.id}}"
        method="post">
 
-    <!--th:action="@{/users/edit}"-->
-    <!--th:action="@{'users/edit/id=' + ${editUser.id}
-    + '/login=' + ${editUser.login}
-    + '/password=' + ${editUser.password}
-    + '/email=' + ${editUser.email}
-    + '/phone_number=' + ${editUser.phone_number}}"-->
-
     <span>Login:</span>
-    <p><input type="text" th:field="*{login}" value placeholder="Login"/></p>
     <span class="validationError"
           th:if="${#fields.hasErrors('login')}"
           th:errors="*{login}">Login error</span>
+    <p><input type="text" th:field="*{login}" value placeholder="Login"/></p>
     <span>Password:</span>
+    <span class="validationError"
+          th:if="${#fields.hasErrors('password')}"
+          th:errors="*{password}">Password error</span>
     <p><input type="text" th:field="*{password}" value placeholder="Password"/></p>
     <span>E-mail:</span>
+    <span class="validationError"
+          th:if="${#fields.hasErrors('email')}"
+          th:errors="*{email}">E-mail error</span>
     <p><input type="text" th:field="*{email}" value placeholder="E-mail"/></p>
     <span>Phone number:</span>
+    <span class="validationError"
+          th:if="${#fields.hasErrors('phone_number')}"
+          th:errors="*{phone_number}">Phone number error</span>
     <p><input type="text" th:field="*{phone_number}" value placeholder="Phone number"/></p>
 
     <p><input type="submit" value="Submit"/> <input type="reset" value="Reset" /></p>
