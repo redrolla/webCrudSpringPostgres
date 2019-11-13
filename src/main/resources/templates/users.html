@@ -4,26 +4,39 @@
 <head>
     <title>Users</title>
     <link rel="stylesheet" th:href="@{/styles.css}" />
+    <link rel="stylesheet" th:href="@{/bootstrap.css}" />
 </head>
 <body>
-<h1>Users:</h1>
 
+<div class="usersBody">
+<h1>Users</h1>
 <h3>Add new user to database:</h3>
     <form action="#" th:action="@{/users}" th:object="${newUser}" method="post">
 
-        <p><input type="text" th:field="*{login}" value placeholder="Login"/></p>
+
         <span class="validationError"
               th:if="${#fields.hasErrors('login')}"
-              th:errors="*{login}">Login error</span>
+              th:errors="*{login}">Login error</span><p>
+        <input type="text" th:field="*{login}" value placeholder="Login"/></p>
+        <span class="validationError"
+              th:if="${#fields.hasErrors('password')}"
+              th:errors="*{password}">Password error</span>
         <p><input type="text" th:field="*{password}" value placeholder="Password"/></p>
+        <span class="validationError"
+              th:if="${#fields.hasErrors('email')}"
+              th:errors="*{email}">Email error</span>
         <p><input type="text" th:field="*{email}" value placeholder="E-mail"/></p>
+        <span class="validationError"
+              th:if="${#fields.hasErrors('phone_number')}"
+              th:errors="*{phone_number}">Phone number error</span>
         <p><input type="text" th:field="*{phone_number}" value placeholder="Phone number"/></p>
 
         <p><input type="submit" value="Submit" onclick="refreshUsersTable()"/> <input type="reset" value="Reset" /></p>
     </form>
+</div>
 
-<h3>All users from database:</h3>
-    <table>
+<h3 class="label1">All users from database:</h3>
+    <table class="table">
             <thead>
                 <tr>
                     <th> Id </th>
@@ -50,7 +63,6 @@
                 </tr>
             </tbody>
     </table>
-
 <!-- Users Table block -->
 <div id="usersTable">
 

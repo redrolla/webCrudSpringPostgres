@@ -6,6 +6,8 @@
     <link rel="stylesheet" th:href="@{/styles.css}" />
 </head>
 <body>
+
+<div text-align="center">
 <h3>Edit user</h3>
 <form action="#" th:object="${editUser}"
       th:action="${'/users/edit/id=' + {editUser.id}}"
@@ -34,6 +36,6 @@
 
     <p><input type="submit" value="Submit"/> <input type="reset" value="Reset" /></p>
 </form>
-
+</div>
 </body>
 </html>

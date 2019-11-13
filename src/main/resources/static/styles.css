@@ -30,3 +30,12 @@ input[type=text] {
 span[class=validationError] {
     color: red;
 }
+
+.usersBody {
+    text-align: center;
+}
+
+.label1 {
+    text-align: center;
+    padding: 20px 0px 0px;
+}

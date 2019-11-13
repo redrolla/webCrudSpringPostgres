@@ -15,9 +15,9 @@ public class User {
     private String login;
     @Size(min=5, message="Password must be at least 5 characters long")
     private String password;
-    @Pattern(regexp = "\\w+[@]\\w+[.]\\D{2,3}",message = "must be formatted like email@google.com, email@mail.ru and etc.")
+    @Pattern(regexp = "\\w+[@]\\w+[.]\\D{2,3}",message = "E-mail must be formatted like email@google.com, email@mail.ru and etc")
     private String email;
-    @Pattern(regexp="[0-9]{10}",message = "phone number must contain only 10 digits")
+    @Pattern(regexp="[0-9]{10}",message = "Phone number must contain only 10 digits")
     private String phone_number;
 
     public User() {

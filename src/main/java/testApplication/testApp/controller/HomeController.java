@@ -56,7 +56,11 @@ public class HomeController {
     }
 
     @PostMapping("/users")
-    public String usersPostPage(@ModelAttribute User newUser, Model model){
+    public String usersPostPage(@ModelAttribute("newUser") @Valid User newUser, BindingResult bindingResult, Model model){
+        if(bindingResult.hasErrors()){
+            model.addAttribute("users",userService.findAll());
+            return "users";
+        }
         model.addAttribute("newUser", newUser);
         userService.save(newUser);
         return usersGetPage(model);
@@ -69,10 +73,15 @@ public class HomeController {
         return "usersEdit";
     }
 
+    /**
+     *
+     * @param afterEditUser, name specified in annotation to match object name in view template
+     * @param bindingResult must follow @ModelAttribute
+     */
     @PostMapping("users/edit/id={id}")
     public String usersEditAfterPostPage(@ModelAttribute("editUser") @Valid User afterEditUser, BindingResult bindingResult, @PathVariable Long id, Model model){
         if(bindingResult.hasErrors()){
-            System.out.println(model.asMap());
+            //System.out.println(model.asMap());
             //return "redirect:/users/edit/id="+id;
             return "usersEdit";
         }
