@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import testApplication.testApp.model.InputEntry;
-import testApplication.testApp.model.InputEntryService;
 import testApplication.testApp.model.User;
 import testApplication.testApp.model.UserService;
 
@@ -19,33 +17,11 @@ import javax.validation.Valid;
 public class HomeController {
 
     @Autowired
-    private InputEntryService inputEntryService;
-
-    @Autowired
     private UserService userService;
 
     @GetMapping("/")
-    public String homePage(Model model){
-        model.addAttribute("inputEntry",new InputEntry());
-        return "home";
-    }
-
-    @PostMapping("/")
-    public String homeSubmit(@ModelAttribute InputEntry inputEntry, Model model){
-        model.addAttribute("inputEntry", inputEntry);
-        inputEntryService.save(inputEntry);
-        return "result";
-    }
-
-    @GetMapping("/entries")
-    public String entriesPage(Model model){
-        InputEntry inputEntryById = inputEntryService.findById(27l).get();
-
-        model.addAttribute("inputEntryById",inputEntryById);
-
-        model.addAttribute("entries",inputEntryService.findAll());
-
-        return "entries";
+    public String homePage(){
+        return "redirect:/users";
     }
 
     @GetMapping("/users")

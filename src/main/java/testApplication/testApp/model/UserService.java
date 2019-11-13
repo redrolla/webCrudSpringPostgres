@@ -3,6 +3,7 @@ package testApplication.testApp.model;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,7 +15,7 @@ public class UserService {
 
     public List<User> findAll() {
         List<User> cities = (List<User>) repository.findAll();
-
+        Collections.sort(cities);
         return cities;
     }
 

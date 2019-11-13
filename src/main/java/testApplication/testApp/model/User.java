@@ -7,7 +7,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class User implements Comparable<User>{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -79,5 +79,10 @@ public class User {
                 ", email='" + email + '\'' +
                 ", phone_number='" + phone_number + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(User u) {
+        return getId().compareTo(u.getId());
     }
 }

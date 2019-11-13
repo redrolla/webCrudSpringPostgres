@@ -8,16 +8,6 @@
 </head>
 <body>
     <h1>Home page</h1>
-
-    <form action="#" th:action="@{/}" th:object="${inputEntry}" method="post">
-        <p>Number: <input type="text" th:field="*{id}" /></p>
-        <p>Message: <input type="text" th:field="*{content}" /></p>
-        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
-    </form>
-
-    <a href="/entries">Show all entries</a>
-    <br>
-    <br>
     <a href="/users">Users page</a>
 
 </body>
