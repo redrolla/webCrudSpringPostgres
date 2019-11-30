@@ -3,6 +3,7 @@
 Core application part is Spring, view uses thymeleaf, working with postgresql database via jpa
 
 Functional:
+
     Add new user: 
       top side of home page, fill up the fields and press "submit" ("reset" if you want to make the fields empty),
       the error warning will appear if you enter something wrong, and you can retry
@@ -16,6 +17,7 @@ Functional:
       press delete to delete user
 
 DataBase propeties:
+
     File name - application.properties
     Currently postgresql is connected
     
