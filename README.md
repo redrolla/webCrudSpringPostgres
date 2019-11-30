@@ -1,6 +1,8 @@
 # webCrudSpringPostgres
 
-Core application part is Spring, view uses thymeleaf, working with postgresql database via jpa
+Core application part is Spring, view uses thymeleaf, working with postgresql database via jpa.
+
+Screenshot of a main page is in repository folder
 
 Functional:
 
