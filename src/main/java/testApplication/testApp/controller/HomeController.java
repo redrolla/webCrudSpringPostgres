@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import testApplication.testApp.model.User;
 import testApplication.testApp.model.UserNoDbService;
-import testApplication.testApp.model.UserService;
 
 import javax.validation.Valid;
 

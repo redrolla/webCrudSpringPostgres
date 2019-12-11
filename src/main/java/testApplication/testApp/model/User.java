@@ -1,16 +1,11 @@
 package testApplication.testApp.model;
 
-import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-@Entity
-@Table(name = "users")
-public class User implements Comparable<User>{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+
+public class User implements Comparable<User>{private Long id;
     @NotBlank(message = "Login cant be empty")
     private String login;
     @Size(min=5, message="Password must be at least 5 characters long")
