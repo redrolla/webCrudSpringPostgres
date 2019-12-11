@@ -9,11 +9,6 @@ import org.springframework.ui.Model;
 
 @SpringBootApplication
 public class TestAppApplication {
-	/**
-	 * TODO
-	 *
-	 */
-
 	public static void main(String[] args) {
 		SpringApplication.run(TestAppApplication.class, args);
 	}
