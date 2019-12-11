@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import testApplication.testApp.model.User;
+import testApplication.testApp.model.UserNoDbService;
 import testApplication.testApp.model.UserService;
 
 import javax.validation.Valid;
@@ -16,7 +17,7 @@ import javax.validation.Valid;
 public class HomeController {
 
     @Autowired
-    private UserService userService;
+    private UserNoDbService userService;
 
     @GetMapping("/")
     public String homePage(){
