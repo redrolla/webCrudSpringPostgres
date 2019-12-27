@@ -28,4 +28,12 @@ DataBase propeties:
     "id" is primary key, autoincrement
     
     
-    
+SQL script:
+    CREATE TABLE users (
+        id bigint PRIMARY KEY NOT NULL,
+        login text,
+        password text,
+        email text,
+        phone_number text
+    );
+    INSERT INTO testusers VALUES (1,'tony','montana','miamy@gold.usd','0123456789');
