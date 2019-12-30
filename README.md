@@ -28,12 +28,16 @@ DataBase propeties:
     "id" is primary key, autoincrement
     
     
-SQL script:
-    CREATE TABLE users (
-        id bigint PRIMARY KEY NOT NULL,
-        login text,
-        password text,
-        email text,
-        phone_number text
+SQL script (for postgresql):
+    DROP TABLE IF EXISTS users;
+
+    CREATE SEQUENCE users_id_seq;
+
+    CREATE TABLE users(
+    	id bigint NOT NULL PRIMARY KEY DEFAULT nextval('users_id_seq'),
+    	login text,
+    	password text,
+    	email text,
+    	phone_number text
     );
-    INSERT INTO testusers VALUES (1,'tony','montana','miamy@gold.usd','0123456789');
+    INSERT INTO users VALUES (1,'tony','montana','miamy@gold.usd','0123456789');
