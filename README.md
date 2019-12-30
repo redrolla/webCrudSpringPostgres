@@ -1,4 +1,6 @@
 # webCrudSpringPostgres
+https://spring-crud-postgres.herokuapp.com/users
+(deployed on heroku, first load can be long 5-10 secs, please be patient)
 
 Core application part is Spring, view uses thymeleaf, working with postgresql database via jpa.
 
